@@ -24,7 +24,7 @@ class MealDetailScreen extends StatelessWidget {
       ),
       margin: EdgeInsets.all(10),
       padding: EdgeInsets.all(10),
-      height: 200,
+      height: 150,
       width: 300,
       child: child,
     );
@@ -34,7 +34,6 @@ class MealDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final mealId = ModalRoute.of(context).settings.arguments as String;
     final selectedMeal = DUMMY_MEALS.firstWhere((meal) => meal.id == mealId);
-
     return Scaffold(
       appBar: AppBar(
         title: Text('${selectedMeal.title}'),
@@ -43,7 +42,6 @@ class MealDetailScreen extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.symmetric(vertical: 10),
               height: 300,
               width: double.infinity,
               child: Image.network(
@@ -55,17 +53,14 @@ class MealDetailScreen extends StatelessWidget {
             buildContainer(
               ListView.builder(
                 itemBuilder: (ctx, index) => Card(
-                  color: Theme.of(context).secondaryHeaderColor,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 5,
-                      horizontal: 10,
+                      color: Theme.of(context).secondaryHeaderColor,
+                      child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 5,
+                            horizontal: 10,
+                          ),
+                          child: Text(selectedMeal.ingredients[index])),
                     ),
-                    child: Text(
-                      selectedMeal.ingredients[index],
-                    ),
-                  ),
-                ),
                 itemCount: selectedMeal.ingredients.length,
               ),
             ),
@@ -73,18 +68,18 @@ class MealDetailScreen extends StatelessWidget {
             buildContainer(
               ListView.builder(
                 itemBuilder: (ctx, index) => Column(
-                  children: [
-                    ListTile(
-                      leading: CircleAvatar(
-                        child: Text('# ${(index + 1)}'),
-                      ),
-                      title: Text(
-                        selectedMeal.steps[index],
-                      ),
+                      children: [
+                        ListTile(
+                          leading: CircleAvatar(
+                            child: Text('# ${(index + 1)}'),
+                          ),
+                          title: Text(
+                            selectedMeal.steps[index],
+                          ),
+                        ),
+                        Divider()
+                      ],
                     ),
-                    Divider()
-                  ],
-                ),
                 itemCount: selectedMeal.steps.length,
               ),
             ),

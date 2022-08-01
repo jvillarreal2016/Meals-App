@@ -209,7 +209,7 @@ const DUMMY_MEALS = const [
       'Balsamic Vinegar',
       'Olive Oil',
       'Salt and Pepper'
-    ], 
+    ],
     steps: [
       'Wash and cut salad and herbs',
       'Dice the salmon',
